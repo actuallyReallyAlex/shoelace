@@ -1,29 +1,16 @@
 import React, { useState } from "react";
-import fs from "fs";
+import Input from "./components/Input";
+import Output from "./components/Output";
 
 const App = () => {
-  const [filePath, setFilePath] = useState(null);
   const [output, setOutput] = useState(null);
-
-  const handleFileUpload = () => {
-    const path = document.getElementById("fileupload").files[0].path;
-    setFilePath(path);
-    const file = fs.readFileSync(path, "utf8");
-    setOutput(file);
-  };
+  const [stage, setStage] = useState("input");
 
   return (
-    <form>
-      <input
-        onChange={handleFileUpload}
-        type="file"
-        name="fileupload"
-        id="fileupload"
-      />
-      <label htmlFor="fileupload"> Select a file to upload</label>
-      {filePath && <span>{JSON.stringify(filePath, null, 2)}</span>}
-      {output && <p>{JSON.stringify(output, null, 2)}</p>}
-    </form>
+    <div>
+      {stage === "input" && <Input setOutput={setOutput} setStage={setStage} />}
+      {stage === "output" && <Output output={output} />}
+    </div>
   );
 };
 
