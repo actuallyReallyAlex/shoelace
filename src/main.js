@@ -18,7 +18,10 @@ function createWindow() {
 
   // and load the index.html of the app.
   // mainWindow.loadFile("index.html");
-  mainWindow.loadFile("app.html");
+  console.log(__dirname);
+  console.log(path.resolve(__dirname, "../public", "index.html"));
+  console.log(path.resolve(__dirname, "../build", "index.html"));
+  mainWindow.loadFile(path.resolve(__dirname, "../build", "index.html"));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
