@@ -4,7 +4,7 @@
   "description": "An application to convert files into JSON strings.",
   "main": "lib/main.js",
   "scripts": {
-    "copy": "copyfiles -u 1 src/index.html lib",
+    "copy": "copyfiles -u 1 src/app.html lib",
     "clean": "rimraf lib",
     "build": "yarn clean && babel src --out-dir lib && yarn copy",
     "start": "electron ./lib/main.js"
@@ -17,12 +17,15 @@
   "author": "alexlee-dev <alex@alexlee.dev>",
   "license": "MIT",
   "dependencies": {
-    "electron": "^6.0.12"
+    "electron": "^6.0.12",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "copyfiles": "^2.1.1",
     "rimraf": "^3.0.0"
   }
