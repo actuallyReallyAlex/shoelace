@@ -1,0 +1,19 @@
+{
+  "name": "shoelacejs",
+  "version": "0.1.0",
+  "description": "An application to convert files into JSON strings.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/alexlee-dev/shoelace.git",
+  "bugs": {
+    "url": "https://github.com/alexlee-dev/shoelace/issues"
+  },
+  "homepage": "https://www.github.com/alexlee-dev/shoelace",
+  "author": "alexlee-dev <alex@alexlee.dev>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^6.0.12"
+  }
+}
