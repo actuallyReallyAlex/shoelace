@@ -2,9 +2,12 @@
   "name": "shoelacejs",
   "version": "0.1.0",
   "description": "An application to convert files into JSON strings.",
-  "main": "main.js",
+  "main": "lib/main.js",
   "scripts": {
-    "start": "electron ."
+    "copy": "copyfiles -u 1 src/index.html lib",
+    "clean": "rimraf lib",
+    "build": "yarn clean && babel src --out-dir lib && yarn copy",
+    "start": "electron lib"
   },
   "repository": "https://github.com/alexlee-dev/shoelace.git",
   "bugs": {
@@ -15,5 +18,12 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^6.0.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "copyfiles": "^2.1.1",
+    "rimraf": "^3.0.0"
   }
 }
