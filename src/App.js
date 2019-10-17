@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  const [filePath, setFilePath] = useState(null);
+
+  const handleFileUpload = () =>
+    setFilePath(document.getElementById("fileupload").files[0].path);
+
   return (
-    <div className="App">
-      <span>HELLO WORLD</span>
-    </div>
+    <form>
+      <input
+        onChange={handleFileUpload}
+        type="file"
+        name="fileupload"
+        id="fileupload"
+      />
+      <label htmlFor="fileupload"> Select a file to upload</label>
+      <span>{JSON.stringify(filePath, null, 2)}</span>
+    </form>
   );
-}
+};
 
 export default App;
