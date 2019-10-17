@@ -7,7 +7,7 @@
     "copy": "copyfiles -u 1 src/index.html lib",
     "clean": "rimraf lib",
     "build": "yarn clean && babel src --out-dir lib && yarn copy",
-    "start": "electron lib"
+    "start": "electron ./lib/main.js"
   },
   "repository": "https://github.com/alexlee-dev/shoelace.git",
   "bugs": {
