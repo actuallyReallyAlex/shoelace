@@ -18,17 +18,18 @@ const Content = styled.div`
 `;
 
 const InnerContainer = styled.div`
+  height: calc(100vh - 164px);
   margin-left: 240px;
   padding: 50px;
 `;
 
 ReactDOM.render(
   <StylesProvider injectFirst>
-    <Container>
-      <Content>
+    <Container id="main-container">
+      <Content id="content">
         <Header />
         <Sidebar />
-        <InnerContainer>
+        <InnerContainer id="inner-container">
           <App />
         </InnerContainer>
       </Content>

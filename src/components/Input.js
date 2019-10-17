@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import fs from "fs";
 import styled from "styled-components";
 import { Button, Typography } from "@material-ui/core";
@@ -32,37 +32,69 @@ const ContinueButtonContainer = styled.div`
 
 const ContinueButton = styled(Button)``;
 
-const Input = ({ setOutput, setStage }) => {
-  const [fileChosen, setFileChosen] = useState(false);
+const NewFileContainer = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
+const NewFileButton = styled(Button)`
+  margin-top: 25px;
+`;
+
+const Input = ({
+  converted,
+  file,
+  setConverted,
+  setFile,
+  setOutput,
+  setStage
+}) => {
   const handleFileUpload = () => {
-    const path = document.getElementById("input").files[0].path;
+    const { name, path } = document.getElementById("input").files[0];
     const file = fs.readFileSync(path, "utf8");
     setOutput(file);
-    setFileChosen(true);
+    setFile(name);
   };
 
-  const handleContinue = () => setStage("output");
+  const handleContinue = () => {
+    setStage("output");
+    setConverted(true);
+  };
 
   return (
     <Container>
       <Title variant="h2">Please select a file to convert</Title>
       <InputContainer>
-        <InputButton
-          id="input"
-          name="input"
-          onChange={handleFileUpload}
-          type="file"
-        />
+        {converted ? (
+          <NewFileContainer>
+            <Typography>Currently Chosen File: {file}</Typography>
+            <NewFileButton
+              color="secondary"
+              onClick={() => alert("clicked")}
+              variant="contained"
+            >
+              Choose New File
+            </NewFileButton>
+          </NewFileContainer>
+        ) : (
+          <InputButton
+            id="input"
+            name="input"
+            onChange={handleFileUpload}
+            type="file"
+          />
+        )}
       </InputContainer>
-      {fileChosen && (
+      {file && (
         <ContinueButtonContainer>
           <ContinueButton
             color="primary"
             onClick={handleContinue}
             variant="contained"
           >
-            Convert
+            {converted ? "Continue" : "Convert"}
           </ContinueButton>
         </ContinueButtonContainer>
       )}
