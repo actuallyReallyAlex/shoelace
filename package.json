@@ -1,6 +1,6 @@
 {
   "name": "shoelacejs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An application to convert files into JSON strings.",
   "main": "main.js",
   "scripts": {
