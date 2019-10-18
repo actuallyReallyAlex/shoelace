@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography
-} from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/Inbox";
-import MailIcon from "@material-ui/icons/Mail";
+import { Divider, Drawer, Typography } from "@material-ui/core";
 import styled from "styled-components";
+import { version } from "../../package.json";
 
 const TitleContainer = styled.div`
   align-items: center;
@@ -29,6 +20,18 @@ const Title = styled(Typography)`
   font-size: 2.5rem;
 `;
 
+const VersionContainer = styled.div`
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  position: absolute;
+  width: 100%;
+`;
+
+const Version = styled(Typography)``;
+
 const Sidebar = () => {
   return (
     <Drawer
@@ -45,27 +48,9 @@ const Sidebar = () => {
         </TitleHeight>
       </TitleContainer>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <VersionContainer>
+        <Version>v{version}</Version>
+      </VersionContainer>
     </Drawer>
   );
 };
