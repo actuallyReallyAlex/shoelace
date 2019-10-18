@@ -34,6 +34,10 @@ const CopyButtonContainer = styled.div`
 
 const CopyButton = styled(Fab)``;
 
+const FabIconContainer = styled.div`
+  margin-right: 10px;
+`;
+
 const Output = ({ output, setStage }) => {
   const handleBack = () => setStage("input");
 
@@ -55,7 +59,9 @@ const Output = ({ output, setStage }) => {
           onClick={() => alert("clicked")}
           variant="extended"
         >
-          <CopyIcon />
+          <FabIconContainer>
+            <CopyIcon />
+          </FabIconContainer>
           Copy
         </CopyButton>
       </CopyButtonContainer>

@@ -1,7 +1,9 @@
 import React from "react";
 import fs from "fs";
 import styled from "styled-components";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Fab, Typography } from "@material-ui/core";
+import ConvertIcon from "@material-ui/icons/Redo";
+import ContinueIcon from "@material-ui/icons/ChevronRight";
 
 const Container = styled.div`
   align-items: flex-start;
@@ -30,7 +32,7 @@ const ContinueButtonContainer = styled.div`
   right: 0;
 `;
 
-const ContinueButton = styled(Button)``;
+const ContinueButton = styled(Fab)``;
 
 const NewFileContainer = styled.div`
   align-items: flex-start;
@@ -41,6 +43,10 @@ const NewFileContainer = styled.div`
 
 const NewFileButton = styled(Button)`
   margin-top: 25px;
+`;
+
+const FabIconContainer = styled.div`
+  margin-right: 10px;
 `;
 
 const Input = ({
@@ -94,6 +100,9 @@ const Input = ({
             onClick={handleContinue}
             variant="contained"
           >
+            <FabIconContainer>
+              {converted ? <ContinueIcon /> : <ConvertIcon />}
+            </FabIconContainer>
             {converted ? "Continue" : "Convert"}
           </ContinueButton>
         </ContinueButtonContainer>
