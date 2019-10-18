@@ -6,6 +6,7 @@ import { StylesProvider } from "@material-ui/core/styles";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import styled from "styled-components";
+import "./assets/prism.css";
 
 const Container = styled.div`
   display: flex;

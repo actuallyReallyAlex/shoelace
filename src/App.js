@@ -19,6 +19,7 @@ const App = () => {
   const [file, setFile] = useState(null);
   const [converted, setConverted] = useState(false);
   const [displayStatus, setDisplayStatus] = useState(false);
+  const [type, setType] = useState(null);
 
   return (
     <AppContainer id="app-container">
@@ -26,10 +27,13 @@ const App = () => {
         <Input
           converted={converted}
           file={file}
+          output={output}
           setConverted={setConverted}
           setFile={setFile}
           setOutput={setOutput}
           setStage={setStage}
+          setType={setType}
+          type={type}
         />
       )}
       {stage === "output" && (
