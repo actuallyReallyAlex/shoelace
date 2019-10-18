@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "./components/Input";
 import Output from "./components/Output";
 import styled from "styled-components";
+import Status from "./components/status";
 
 const AppContainer = styled.div`
   align-items: flex-start;
@@ -17,6 +18,7 @@ const App = () => {
   const [stage, setStage] = useState("input");
   const [file, setFile] = useState(null);
   const [converted, setConverted] = useState(false);
+  const [displayStatus, setDisplayStatus] = useState(false);
 
   return (
     <AppContainer id="app-container">
@@ -30,7 +32,17 @@ const App = () => {
           setStage={setStage}
         />
       )}
-      {stage === "output" && <Output output={output} setStage={setStage} />}
+      {stage === "output" && (
+        <Output
+          output={output}
+          setDisplayStatus={setDisplayStatus}
+          setStage={setStage}
+        />
+      )}
+      <Status
+        displayStatus={displayStatus}
+        setDisplayStatus={setDisplayStatus}
+      />
     </AppContainer>
   );
 };
