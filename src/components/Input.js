@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Button, Fab, Typography } from "@material-ui/core";
 import ConvertIcon from "@material-ui/icons/Redo";
 import ContinueIcon from "@material-ui/icons/ChevronRight";
+import CodePreview from "./CodePreview";
 
 const Container = styled.div`
   align-items: flex-start;
@@ -52,16 +53,21 @@ const FabIconContainer = styled.div`
 const Input = ({
   converted,
   file,
+  output,
   setConverted,
   setFile,
   setOutput,
-  setStage
+  setStage,
+  setType,
+  type
 }) => {
   const handleFileUpload = () => {
-    const { name, path } = document.getElementById("input").files[0];
+    const { name, path, type } = document.getElementById("input").files[0];
+    const finalType = type.replace("text/", "");
     const file = fs.readFileSync(path, "utf8");
     setOutput(file);
     setFile(name);
+    setType(finalType);
   };
 
   const handleContinue = () => {
@@ -93,12 +99,14 @@ const Input = ({
           />
         )}
       </InputContainer>
+      {/* {file && <CodePreview code={output} language="javascript" />} */}
+      <CodePreview code={output} language={type} />
       {file && (
         <ContinueButtonContainer>
           <ContinueButton
             color="primary"
             onClick={handleContinue}
-            variant="contained"
+            variant="extended"
           >
             <FabIconContainer>
               {converted ? <ContinueIcon /> : <ConvertIcon />}
