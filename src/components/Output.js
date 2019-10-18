@@ -3,6 +3,7 @@ import { Fab, IconButton, TextField } from "@material-ui/core";
 import styled from "styled-components";
 import CopyIcon from "@material-ui/icons/FileCopy";
 import BackIcon from "@material-ui/icons/ChevronLeft";
+import copy from "copy-to-clipboard";
 
 const Container = styled.div`
   align-items: flex-start;
@@ -38,8 +39,13 @@ const FabIconContainer = styled.div`
   margin-right: 10px;
 `;
 
-const Output = ({ output, setStage }) => {
+const Output = ({ output, setDisplayStatus, setStage }) => {
   const handleBack = () => setStage("input");
+
+  const handleCopy = () => {
+    copy(JSON.stringify(output));
+    setDisplayStatus(true);
+  };
 
   return (
     <Container id="output-container">
@@ -54,11 +60,7 @@ const Output = ({ output, setStage }) => {
         value={JSON.stringify(output, null, 2)}
       />
       <CopyButtonContainer>
-        <CopyButton
-          aria-label="copy"
-          onClick={() => alert("clicked")}
-          variant="extended"
-        >
+        <CopyButton aria-label="copy" onClick={handleCopy} variant="extended">
           <FabIconContainer>
             <CopyIcon />
           </FabIconContainer>
