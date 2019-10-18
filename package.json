@@ -1,6 +1,6 @@
 {
   "name": "shoelacejs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An application to convert files into JSON strings.",
   "main": "public/electron.js",
   "homepage": "./",
@@ -10,7 +10,12 @@
     "develop": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
     "predist": "yarn build",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "create-icons": "electron-icon-generator src/assets/icon.png",
+    "copy-icons": "copyfiles -u 2 icons/mac/app.icns assets && copyfiles -u 2 icons/win/app.ico assets && copyfiles -u 2 icons/png/*.png assets",
+    "remove-generated-icons": "rimraf icons",
+    "rename-icons": "node rename.js",
+    "generate-icons": "yarn create-icons && yarn copy-icons && yarn remove-generated-icons && yarn rename-icons"
   },
   "repository": "https://github.com/alexlee-dev/shoelace.git",
   "bugs": {
@@ -32,8 +37,11 @@
     "@rescripts/cli": "^0.0.12",
     "@rescripts/rescript-env": "^0.0.10",
     "concurrently": "^5.0.0",
+    "copyfiles": "^2.1.1",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
+    "electron-icon-generator": "^1.0.2",
+    "rimraf": "^3.0.0",
     "typescript": "^3.6.4",
     "wait-on": "^3.3.0"
   },
