@@ -2,18 +2,69 @@
   "name": "shoelacejs",
   "version": "0.0.0",
   "description": "An application to convert files into JSON strings.",
-  "main": "main.js",
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
-    "start": "electron ."
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "develop": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "predist": "yarn build",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/alexlee-dev/shoelace.git",
   "bugs": {
     "url": "https://github.com/alexlee-dev/shoelace/issues"
   },
-  "homepage": "https://www.github.com/alexlee-dev/shoelace",
-  "author": "alexlee-dev <alex@alexlee.dev>",
   "license": "MIT",
   "dependencies": {
-    "electron": "^6.0.12"
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "^3.2.0",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.12",
+    "@rescripts/rescript-env": "^0.0.10",
+    "concurrently": "^5.0.0",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
+    "typescript": "^3.6.4",
+    "wait-on": "^3.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": {
+    "name": "Alex Lee",
+    "email": "alex@alexlee.dev",
+    "url": "https://www.alexlee.dev"
+  },
+  "build": {
+    "appId": "com.alexlee.shoelace",
+    "productName": "Shoelace",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
