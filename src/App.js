@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./components/Input";
 import Output from "./components/Output";
 import styled from "styled-components";
@@ -14,7 +14,7 @@ const AppContainer = styled.div`
   width: 100%;
 `;
 
-const App = () => {
+const App = ({ store }) => {
   const [output, setOutput] = useState(null);
   const [stage, setStage] = useState("home");
   const [file, setFile] = useState(null);
@@ -23,7 +23,7 @@ const App = () => {
   const [type, setType] = useState(null);
 
   const stages = {
-    home: <Home />,
+    home: <Home setStage={setStage} store={store} />,
     input: (
       <Input
         converted={converted}
@@ -34,6 +34,7 @@ const App = () => {
         setOutput={setOutput}
         setStage={setStage}
         setType={setType}
+        store={store}
         type={type}
       />
     ),
@@ -42,9 +43,16 @@ const App = () => {
         output={output}
         setDisplayStatus={setDisplayStatus}
         setStage={setStage}
+        store={store}
       />
     )
   };
+
+  useEffect(() => {
+    if (!store.get("pastFiles")) {
+      store.set("pastFiles", []);
+    }
+  }, [store]);
 
   return (
     <AppContainer id="app-container">

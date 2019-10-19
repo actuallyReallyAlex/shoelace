@@ -7,6 +7,9 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import styled from "styled-components";
 import "./assets/prism.css";
+import Store from "electron-store";
+
+const store = new Store();
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +34,7 @@ ReactDOM.render(
         <Header />
         <Sidebar />
         <InnerContainer id="inner-container">
-          <App />
+          <App store={store} />
         </InnerContainer>
       </Content>
     </Container>
