@@ -6,6 +6,8 @@ import ConvertIcon from "@material-ui/icons/Redo";
 import ContinueIcon from "@material-ui/icons/ChevronRight";
 import CodePreview from "./CodePreview";
 import UploadIcon from "@material-ui/icons/CloudUpload";
+import uuid from "uuid/v4";
+import moment from "moment";
 
 const Container = styled.div`
   align-items: flex-start;
@@ -103,6 +105,7 @@ const Input = ({
   setOutput,
   setStage,
   setType,
+  store,
   type
 }) => {
   const handleFileUpload = () => {
@@ -120,6 +123,15 @@ const Input = ({
   };
 
   const handleContinue = () => {
+    const pastFiles = store.get("pastFiles");
+    pastFiles.push({
+      created: moment().format("x"),
+      id: uuid(),
+      name: file,
+      output,
+      string: JSON.stringify(output)
+    });
+    store.set("pastFiles", pastFiles);
     setStage("output");
     setConverted(true);
   };
