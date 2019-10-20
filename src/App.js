@@ -94,7 +94,11 @@ const App = () => {
         <Container id="main-container">
           <Content id="content">
             <Header />
-            <Sidebar forceUpdate={forceUpdate} store={store} />
+            <Sidebar
+              forceUpdate={forceUpdate}
+              setStage={setStage}
+              store={store}
+            />
             <InnerContainer id="inner-container">
               <AppContainer id="app-container">
                 {stages[stage]}
