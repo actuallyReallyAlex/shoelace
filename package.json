@@ -25,6 +25,7 @@
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
+    "@sentry/electron": "0.17.4",
     "copy-to-clipboard": "^3.2.0",
     "electron-is-dev": "^1.1.0",
     "electron-store": "^5.0.0",
