@@ -23,7 +23,7 @@ const App = ({ store }) => {
   const [type, setType] = useState(null);
 
   const stages = {
-    home: <Home setStage={setStage} store={store} />,
+    home: <Home store={store} />,
     input: (
       <Input
         converted={converted}

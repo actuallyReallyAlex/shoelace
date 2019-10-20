@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
 import FileDisplay from "./FileDisplay";
 
 const Container = styled.div`
@@ -8,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 `;
 
@@ -17,14 +16,10 @@ const PastFilesContainer = styled.div`
   flex-direction: row;
 `;
 
-const Home = ({ setStage, store }) => {
+const Home = ({ store }) => {
   console.log(store.get("pastFiles"));
   return (
     <Container id="home-container">
-      <span>HOME</span>
-      <Button onClick={() => setStage("input")}>INPUT</Button>
-      <Button onClick={() => setStage("output")}>OUTPUT</Button>
-      <Button onClick={() => store.set("pastFiles", [])}>Clear History</Button>
       <PastFilesContainer>
         {store.get("pastFiles").map(pastFile => (
           <FileDisplay key={pastFile.id} pastFile={pastFile} />
