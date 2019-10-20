@@ -73,6 +73,7 @@ const App = () => {
     ),
     output: (
       <Output
+        file={file}
         output={output}
         setDisplayStatus={setDisplayStatus}
         setStage={setStage}
