@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Divider,
   Drawer,
@@ -9,6 +9,7 @@ import {
   Typography
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
+import ConvertIcon from "@material-ui/icons/InsertDriveFile";
 import DeleteIcon from "@material-ui/icons/Delete";
 import styled from "styled-components";
 import { version } from "../../package.json";
@@ -46,7 +47,7 @@ const VersionContainer = styled.div`
 
 const Version = styled(Typography)``;
 
-const Sidebar = ({ forceUpdate, store }) => {
+const Sidebar = ({ forceUpdate, setStage, store }) => {
   const handleDelete = () => {
     store.set("pastFiles", []);
     forceUpdate();
@@ -70,6 +71,8 @@ const Sidebar = ({ forceUpdate, store }) => {
     forceUpdate();
   };
 
+  const handleConvert = () => setStage("input");
+
   return (
     <Drawer
       anchor="left"
@@ -85,22 +88,31 @@ const Sidebar = ({ forceUpdate, store }) => {
         </TitleHeight>
       </TitleContainer>
       <Divider />
-      {process.env.NODE_ENV === "development" && (
-        <List>
-          <ListItem button onClick={handleDelete}>
-            <ListItemIcon>
-              <DeleteIcon />
-            </ListItemIcon>
-            <ListItemText primary="Delete" />
-          </ListItem>
-          <ListItem button onClick={handleAdd}>
-            <ListItemIcon>
-              <AddIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Items" />
-          </ListItem>
-        </List>
-      )}
+      <List>
+        <ListItem button onClick={handleConvert}>
+          <ListItemIcon>
+            <ConvertIcon />
+          </ListItemIcon>
+          <ListItemText primary="Convert a File" />
+        </ListItem>
+        {process.env.NODE_ENV === "development" && (
+          <Fragment>
+            <ListItem button onClick={handleDelete}>
+              <ListItemIcon>
+                <DeleteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Delete" />
+            </ListItem>
+            <ListItem button onClick={handleAdd}>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <ListItemText primary="Add Items" />
+            </ListItem>
+          </Fragment>
+        )}
+      </List>
+
       <VersionContainer>
         <Version>v{version}</Version>
       </VersionContainer>
