@@ -1,5 +1,5 @@
 import React from "react";
-import { Fab, IconButton, TextField } from "@material-ui/core";
+import { Fab, IconButton, TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 import CopyIcon from "@material-ui/icons/FileCopy";
 import BackIcon from "@material-ui/icons/ChevronLeft";
@@ -39,12 +39,26 @@ const FabIconContainer = styled.div`
   margin-right: 10px;
 `;
 
-const Output = ({ output, setDisplayStatus, setStage }) => {
+const ExportToFileButton = styled(Button)``;
+
+const Output = ({ file, output, setDisplayStatus, setStage }) => {
   const handleBack = () => setStage("input");
 
   const handleCopy = () => {
     copy(JSON.stringify(output));
     setDisplayStatus(true);
+  };
+
+  const handleExport = () => {
+    const exportLink = document.createElement("a");
+    exportLink.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," +
+        encodeURIComponent(`{ "code": ${JSON.stringify(output)} }`)
+    );
+    const trimmedFileName = file.match(/^.*?(?=\.)/);
+    exportLink.setAttribute("download", `${trimmedFileName}.json`);
+    exportLink.click();
   };
 
   return (
@@ -67,6 +81,13 @@ const Output = ({ output, setDisplayStatus, setStage }) => {
           Copy
         </CopyButton>
       </CopyButtonContainer>
+      <ExportToFileButton
+        aria-label="Export"
+        onClick={handleExport}
+        variant="contained"
+      >
+        Export
+      </ExportToFileButton>
     </Container>
   );
 };
