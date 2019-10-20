@@ -16,12 +16,17 @@ const PastFilesContainer = styled.div`
   flex-direction: row;
 `;
 
-const Home = ({ store }) => {
+const Home = ({ forceUpdate, store }) => {
   return (
     <Container id="home-container">
       <PastFilesContainer>
         {store.get("pastFiles").map(pastFile => (
-          <FileDisplay key={pastFile.id} pastFile={pastFile} />
+          <FileDisplay
+            forceUpdate={forceUpdate}
+            key={pastFile.id}
+            pastFile={pastFile}
+            store={store}
+          />
         ))}
       </PastFilesContainer>
     </Container>

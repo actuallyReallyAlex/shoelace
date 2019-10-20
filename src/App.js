@@ -56,7 +56,7 @@ const App = () => {
   const forceUpdate = useCallback(() => updateState({}), []);
 
   const stages = {
-    home: <Home store={store} />,
+    home: <Home forceUpdate={forceUpdate} store={store} />,
     input: (
       <Input
         converted={converted}

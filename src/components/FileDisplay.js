@@ -4,8 +4,10 @@ import {
   Card,
   CardActions,
   CardContent,
+  IconButton,
   Typography
 } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import moment from "moment";
 import styled from "styled-components";
 import { languageTypes } from "../constants";
@@ -49,10 +51,18 @@ const TopContainer = styled.div`
   display: flex;
 `;
 
-const FileDisplay = ({ pastFile }) => {
+const FileDisplay = ({ forceUpdate, pastFile, store }) => {
   const { created, id, language, name } = pastFile;
   const date = moment(created, "x").format("MM/DD/YYYY");
   const time = moment(created, "x").format("h:mm A");
+
+  const handleDelete = () => {
+    const pastFiles = store.get("pastFiles");
+    const index = pastFiles.findIndex(file => file.id === id);
+    pastFiles.splice(index, 1);
+    store.set("pastFiles", pastFiles);
+    forceUpdate();
+  };
 
   return (
     <StyledCard>
@@ -77,6 +87,9 @@ const FileDisplay = ({ pastFile }) => {
         <Button onClick={() => alert("clicked")} size="small">
           View File
         </Button>
+        <IconButton aria-label="Delete" onClick={handleDelete}>
+          <DeleteIcon />
+        </IconButton>
       </CardActions>
     </StyledCard>
   );
