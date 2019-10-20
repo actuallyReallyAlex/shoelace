@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { version } from "../../package.json";
 import moment from "moment";
 import uuid from "uuid/v4";
+import { randItem } from "pickitt";
 
 const TitleContainer = styled.div`
   align-items: center;
@@ -58,6 +59,7 @@ const Sidebar = ({ forceUpdate, store }) => {
       newPastFiles.push({
         created: moment().format("x"),
         id: uuid(),
+        language: randItem(["javascript", "html", "java"]),
         name: `TestFile${i}`,
         output: "",
         string: ""

@@ -44,6 +44,7 @@
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
     "electron-icon-generator": "^1.0.2",
+    "pickitt": "^2.0.3",
     "rimraf": "^3.0.0",
     "typescript": "^3.6.4",
     "wait-on": "^3.3.0"

@@ -127,6 +127,7 @@ const Input = ({
     pastFiles.push({
       created: moment().format("x"),
       id: uuid(),
+      language: type,
       name: file,
       output,
       string: JSON.stringify(output)
