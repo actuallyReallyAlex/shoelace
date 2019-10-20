@@ -17,7 +17,6 @@ const PastFilesContainer = styled.div`
 `;
 
 const Home = ({ store }) => {
-  console.log(store.get("pastFiles"));
   return (
     <Container id="home-container">
       <PastFilesContainer>

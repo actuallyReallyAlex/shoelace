@@ -1,7 +1,19 @@
 import React from "react";
-import { Divider, Drawer, Typography } from "@material-ui/core";
+import {
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
 import styled from "styled-components";
 import { version } from "../../package.json";
+import moment from "moment";
+import uuid from "uuid/v4";
 
 const TitleContainer = styled.div`
   align-items: center;
@@ -33,7 +45,29 @@ const VersionContainer = styled.div`
 
 const Version = styled(Typography)``;
 
-const Sidebar = () => {
+const Sidebar = ({ forceUpdate, store }) => {
+  const handleDelete = () => {
+    store.set("pastFiles", []);
+    forceUpdate();
+  };
+
+  const handleAdd = () => {
+    const newPastFiles = [];
+
+    for (let i = 0; i < 5; i++) {
+      newPastFiles.push({
+        created: moment().format("x"),
+        id: uuid(),
+        name: `TestFile${i}`,
+        output: "",
+        string: ""
+      });
+    }
+
+    store.set("pastFiles", newPastFiles);
+    forceUpdate();
+  };
+
   return (
     <Drawer
       anchor="left"
@@ -49,6 +83,22 @@ const Sidebar = () => {
         </TitleHeight>
       </TitleContainer>
       <Divider />
+      {process.env.NODE_ENV === "development" && (
+        <List>
+          <ListItem button onClick={handleDelete}>
+            <ListItemIcon>
+              <DeleteIcon />
+            </ListItemIcon>
+            <ListItemText primary="Delete" />
+          </ListItem>
+          <ListItem button onClick={handleAdd}>
+            <ListItemIcon>
+              <AddIcon />
+            </ListItemIcon>
+            <ListItemText primary="Add Items" />
+          </ListItem>
+        </List>
+      )}
       <VersionContainer>
         <Version>v{version}</Version>
       </VersionContainer>
