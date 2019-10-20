@@ -18,6 +18,7 @@ const TitleHeight = styled.div`
 
 const Title = styled(Typography)`
   font-size: 2.5rem;
+  user-select: none;
 `;
 
 const VersionContainer = styled.div`
