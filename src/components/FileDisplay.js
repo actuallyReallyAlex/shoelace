@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import moment from "moment";
 import styled from "styled-components";
+import { languageTypes } from "../constants";
 
 const StyledCard = styled(Card)`
   margin-right: 25px;
@@ -33,18 +34,41 @@ const Name = styled(Typography)`
   user-select: none;
 `;
 
+const LanguageIconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 53.59px;
+  justify-content: center;
+  margin-right: 5px;
+  width: 53.59px;
+`;
+
+const TimeInfoContainer = styled.div``;
+
+const TopContainer = styled.div`
+  display: flex;
+`;
+
 const FileDisplay = ({ pastFile }) => {
-  const { created, name } = pastFile;
+  const { created, id, language, name } = pastFile;
   const date = moment(created, "x").format("MM/DD/YYYY");
   const time = moment(created, "x").format("h:mm A");
 
   return (
     <StyledCard>
       <CardContent>
-        <Date color="textSecondary">{date}</Date>
-        <Time color="textSecondary" gutterBottom>
-          {time}
-        </Time>
+        <TopContainer id={`top-container-${id}`}>
+          <LanguageIconContainer id={`language-icon-container-${id}`}>
+            {languageTypes[language]}
+          </LanguageIconContainer>
+          <TimeInfoContainer id={`time-info-container-${id}`}>
+            <Date color="textSecondary">{date}</Date>
+            <Time color="textSecondary" gutterBottom>
+              {time}
+            </Time>
+          </TimeInfoContainer>
+        </TopContainer>
+
         <Name variant="h5" component="h2">
           {name}
         </Name>

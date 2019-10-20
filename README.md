@@ -15,3 +15,7 @@ An application to convert files into JSON strings.
 `yarn dist`
 
 > Builds with react, then uses electron-builder to build a distributable version stored in /dist
+
+## Attributions
+
+https://konpa.github.io/devicon/
