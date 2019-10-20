@@ -22,15 +22,15 @@ const StyledCard = styled(Card)`
 `;
 
 const Date = styled(Typography)`
-  pointer-events: none;
+  user-select: none;
 `;
 
 const Time = styled(Typography)`
-  pointer-events: none;
+  user-select: none;
 `;
 
 const Name = styled(Typography)`
-  pointer-events: none;
+  user-select: none;
 `;
 
 const FileDisplay = ({ pastFile }) => {
