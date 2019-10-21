@@ -1,24 +1,17 @@
 body {
-  /* background-color: #f5f7fb; */
-  /* font-family: 'Noto Sans', sans-serif; */
   margin: 0;
 }
 
 div.drawer-paper {
   width: 240px;
 }
-/* 
-div.search-root {
-  color: inherit !important;
+
+div.input-root {
+  color: inherit;
 }
 
-input.search-input {
+input.input-input {
   padding: 8px 8px 8px 56px;
   transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  width: '100%';
+  width: 100%;
 }
-
-pre.code {
-  margin-bottom: 25px;
-  margin-top: 25px;
-} */
