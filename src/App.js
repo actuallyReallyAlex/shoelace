@@ -21,14 +21,6 @@ const AppContainer = styled.div`
 
 const store = new Store();
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      500: "#e040fb"
-    }
-  }
-});
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,12 +29,6 @@ const Container = styled.div`
 
 const Content = styled.div`
   flex-grow: 1;
-`;
-
-const InnerContainer = styled.div`
-  height: calc(100vh - 164px);
-  margin-left: 240px;
-  padding: 50px;
 `;
 
 const App = () => {
@@ -54,9 +40,10 @@ const App = () => {
   const [type, setType] = useState(null);
   const [, updateState] = React.useState();
   const forceUpdate = useCallback(() => updateState({}), []);
+  const [darkMode, setDarkMode] = useState(false);
 
   const stages = {
-    home: <Home forceUpdate={forceUpdate} store={store} />,
+    home: <Home darkMode={darkMode} forceUpdate={forceUpdate} store={store} />,
     input: (
       <Input
         converted={converted}
@@ -89,13 +76,29 @@ const App = () => {
     }
   }, []);
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        500: darkMode ? "#ac99b0" : "#e040fb"
+      }
+    }
+  });
+
+  const InnerContainer = styled.div`
+    background-color: ${darkMode ? "#453c46" : "#FFFFFF"}
+    height: calc(100vh - 164px);
+    margin-left: 240px;
+    padding: 50px;
+  `;
+
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <Container id="main-container">
           <Content id="content">
-            <Header />
+            <Header darkMode={darkMode} setDarkMode={setDarkMode} />
             <Sidebar
+              darkMode={darkMode}
               forceUpdate={forceUpdate}
               setStage={setStage}
               store={store}

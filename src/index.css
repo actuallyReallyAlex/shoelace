@@ -2,7 +2,13 @@ body {
   margin: 0;
 }
 
-div.drawer-paper {
+div.drawer-paper-dark {
+  background-color: #766779;
+  color: #ffffff;
+  width: 240px;
+}
+
+div.drawer-paper-light {
   width: 240px;
 }
 

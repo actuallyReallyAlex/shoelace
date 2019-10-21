@@ -29,20 +29,7 @@ const SearchIconContainer = styled.div`
   width: 56px;
 `;
 
-const SearchContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  margin-bottom: 25px;
-  margin-left: 0;
-  position: relative;
-  width: 100%;
-
-  :hover {
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-`;
-
-const Home = ({ forceUpdate, store }) => {
+const Home = ({ darkMode, forceUpdate, store }) => {
   const pastFiles = store.get("pastFiles");
   const [filteredFiles, setFilteredFiles] = useState(pastFiles);
 
@@ -58,6 +45,19 @@ const Home = ({ forceUpdate, store }) => {
       setFilteredFiles(newFilteredFiles);
     }
   };
+
+  const SearchContainer = styled.div`
+    background-color: ${darkMode ? "#766779" : "rgba(0, 0, 0, 0.15)"};
+    border-radius: 4px;
+    margin-bottom: 25px;
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+
+    :hover {
+      background-color: ${darkMode ? "#958299" : "rgba(0, 0, 0, 0.25)"};
+    }
+  `;
 
   return (
     <Container id="home-container">
@@ -78,6 +78,7 @@ const Home = ({ forceUpdate, store }) => {
       <PastFilesContainer>
         {filteredFiles.map(pastFile => (
           <FileDisplay
+            darkMode={darkMode}
             forceUpdate={forceUpdate}
             key={pastFile.id}
             pastFile={pastFile}
