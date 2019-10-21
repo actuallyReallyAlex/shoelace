@@ -47,7 +47,7 @@ const VersionContainer = styled.div`
 
 const Version = styled(Typography)``;
 
-const Sidebar = ({ forceUpdate, setStage, store }) => {
+const Sidebar = ({ darkMode, forceUpdate, setStage, store }) => {
   const handleDelete = () => {
     store.set("pastFiles", []);
     forceUpdate();
@@ -73,11 +73,21 @@ const Sidebar = ({ forceUpdate, setStage, store }) => {
 
   const handleConvert = () => setStage("input");
 
+  const StyledListItemIcon = styled(ListItemIcon)`
+    color: ${darkMode ? "#ffffff" : "rgba(0, 0, 0, 0.54)"};
+  `;
+
+  const StyledListItem = styled(ListItem)`
+    :hover {
+      background-color: ${darkMode ? "#958299" : "rgba(0, 0, 0, 0.08)"};
+    }
+  `;
+
   return (
     <Drawer
       anchor="left"
       classes={{
-        paper: "drawer-paper"
+        paper: darkMode ? "drawer-paper-dark" : "drawer-paper-light"
       }}
       open={true}
       variant="persistent"
@@ -89,26 +99,26 @@ const Sidebar = ({ forceUpdate, setStage, store }) => {
       </TitleContainer>
       <Divider />
       <List>
-        <ListItem button onClick={handleConvert}>
-          <ListItemIcon>
+        <StyledListItem button onClick={handleConvert}>
+          <StyledListItemIcon>
             <ConvertIcon />
-          </ListItemIcon>
+          </StyledListItemIcon>
           <ListItemText primary="Convert a File" />
-        </ListItem>
+        </StyledListItem>
         {process.env.NODE_ENV === "development" && (
           <Fragment>
-            <ListItem button onClick={handleDelete}>
-              <ListItemIcon>
+            <StyledListItem button onClick={handleDelete}>
+              <StyledListItemIcon>
                 <DeleteIcon />
-              </ListItemIcon>
+              </StyledListItemIcon>
               <ListItemText primary="Delete" />
-            </ListItem>
-            <ListItem button onClick={handleAdd}>
-              <ListItemIcon>
+            </StyledListItem>
+            <StyledListItem button onClick={handleAdd}>
+              <StyledListItemIcon>
                 <AddIcon />
-              </ListItemIcon>
+              </StyledListItemIcon>
               <ListItemText primary="Add Items" />
-            </ListItem>
+            </StyledListItem>
           </Fragment>
         )}
       </List>
