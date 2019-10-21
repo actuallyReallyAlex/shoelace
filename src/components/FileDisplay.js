@@ -54,7 +54,7 @@ const FileDisplay = ({ darkMode, forceUpdate, pastFile, store }) => {
 
   const StyledCard = styled(Card)`
     background-color: ${darkMode ? "#958299" : "#ffffff"};
-    color: #ffffff;
+    color: ${darkMode ? "#ffffff" : "rgba(0, 0, 0, 0.87)"};
     margin-right: 25px;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
