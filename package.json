@@ -10,7 +10,12 @@
     "develop": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
     "predist": "yarn build",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "create-icons": "electron-icon-generator src/assets/icon.png",
+    "copy-icons": "copyfiles -u 2 icons/mac/app.icns assets && copyfiles -u 2 icons/win/app.ico assets && copyfiles -u 2 icons/png/*.png assets",
+    "remove-generated-icons": "rimraf icons",
+    "rename-icons": "node rename.js",
+    "generate-icons": "yarn create-icons && yarn copy-icons && yarn remove-generated-icons && yarn rename-icons"
   },
   "repository": "https://github.com/alexlee-dev/shoelace.git",
   "bugs": {
@@ -20,18 +25,29 @@
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
+    "@sentry/electron": "0.17.4",
+    "copy-to-clipboard": "^3.2.0",
     "electron-is-dev": "^1.1.0",
+    "electron-store": "^5.0.0",
+    "lodash.escaperegexp": "^4.1.2",
+    "moment": "^2.24.0",
+    "prismjs": "^1.17.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "^3.2.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@rescripts/cli": "^0.0.12",
     "@rescripts/rescript-env": "^0.0.10",
     "concurrently": "^5.0.0",
+    "copyfiles": "^2.1.1",
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0",
+    "electron-icon-generator": "^1.0.2",
+    "pickitt": "^2.0.3",
+    "rimraf": "^3.0.0",
     "typescript": "^3.6.4",
     "wait-on": "^3.3.0"
   },

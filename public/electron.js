@@ -1,9 +1,13 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-
+const Sentry = require("@sentry/electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
+
+Sentry.init({
+  dsn: "https://ca90b4c2c1994213bdda770526223c2a@sentry.io/1785274"
+});
 
 let mainWindow;
 

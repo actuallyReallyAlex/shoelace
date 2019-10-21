@@ -1,8 +1,9 @@
 import React from "react";
-import { Fab, IconButton, TextField } from "@material-ui/core";
+import { Fab, IconButton, TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 import CopyIcon from "@material-ui/icons/FileCopy";
 import BackIcon from "@material-ui/icons/ChevronLeft";
+import copy from "copy-to-clipboard";
 
 const Container = styled.div`
   align-items: flex-start;
@@ -38,8 +39,27 @@ const FabIconContainer = styled.div`
   margin-right: 10px;
 `;
 
-const Output = ({ output, setStage }) => {
+const ExportToFileButton = styled(Button)``;
+
+const Output = ({ file, output, setDisplayStatus, setStage }) => {
   const handleBack = () => setStage("input");
+
+  const handleCopy = () => {
+    copy(JSON.stringify(output));
+    setDisplayStatus(true);
+  };
+
+  const handleExport = () => {
+    const exportLink = document.createElement("a");
+    exportLink.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," +
+        encodeURIComponent(`{ "code": ${JSON.stringify(output)} }`)
+    );
+    const trimmedFileName = file.match(/^.*?(?=\.)/);
+    exportLink.setAttribute("download", `${trimmedFileName}.json`);
+    exportLink.click();
+  };
 
   return (
     <Container id="output-container">
@@ -54,17 +74,20 @@ const Output = ({ output, setStage }) => {
         value={JSON.stringify(output, null, 2)}
       />
       <CopyButtonContainer>
-        <CopyButton
-          aria-label="copy"
-          onClick={() => alert("clicked")}
-          variant="extended"
-        >
+        <CopyButton aria-label="copy" onClick={handleCopy} variant="extended">
           <FabIconContainer>
             <CopyIcon />
           </FabIconContainer>
           Copy
         </CopyButton>
       </CopyButtonContainer>
+      <ExportToFileButton
+        aria-label="Export"
+        onClick={handleExport}
+        variant="contained"
+      >
+        Export
+      </ExportToFileButton>
     </Container>
   );
 };
