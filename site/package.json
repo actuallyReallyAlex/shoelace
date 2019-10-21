@@ -1,0 +1,34 @@
+{
+  "name": "shoelacejs-site",
+  "version": "0.1.0",
+  "description": "Website for Shoelace.",
+  "main": "public/electron.js",
+  "license": "MIT",
+  "author": {
+    "name": "Alex Lee",
+    "email": "alex@alexlee.dev",
+    "url": "https://www.alexlee.dev"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "gatsby": "^2.17.0",
+    "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-styled-components": "^3.1.11",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
