@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -9,6 +8,7 @@ import {
   Typography
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ViewIcon from "@material-ui/icons/Pageview";
 import moment from "moment";
 import styled from "styled-components";
 import { languageTypes } from "../constants";
@@ -68,8 +68,8 @@ const FileDisplay = ({ darkMode, forceUpdate, pastFile, store }) => {
     }
   `;
 
-  const ViewFileButton = styled(Button)`
-    color: ${darkMode ? "#ffffff" : "rgba(0, 0, 0, 0.87)"};
+  const ViewFileButton = styled(IconButton)`
+    color: ${darkMode ? "#ffffff" : "rgba(0, 0, 0, 0.54)"};
   `;
 
   const DeleteButton = styled(IconButton)`
@@ -96,8 +96,8 @@ const FileDisplay = ({ darkMode, forceUpdate, pastFile, store }) => {
         </Name>
       </CardContent>
       <CardActions>
-        <ViewFileButton onClick={() => alert("clicked")} size="small">
-          View File
+        <ViewFileButton aria-label="View File" onClick={() => alert("clicked")}>
+          <ViewIcon />
         </ViewFileButton>
         <DeleteButton aria-label="Delete" onClick={handleDelete}>
           <DeleteIcon />
