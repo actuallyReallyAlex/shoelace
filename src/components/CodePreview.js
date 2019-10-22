@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import Prism from "prismjs";
 import styled from "styled-components";
 
@@ -19,6 +20,11 @@ const CodePreview = ({ code, language }) => {
       </code>
     </Pre>
   );
+};
+
+CodePreview.propTypes = {
+  code: PropTypes.string,
+  language: PropTypes.string
 };
 
 export default CodePreview;

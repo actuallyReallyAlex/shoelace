@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { IconButton, Snackbar, SnackbarContent } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -48,6 +49,11 @@ const Status = ({ displayStatus, setDisplayStatus }) => {
       />
     </Snackbar>
   );
+};
+
+Status.propTypes = {
+  displayStatus: PropTypes.bool.isRequired,
+  setDisplayStatus: PropTypes.func.isRequired
 };
 
 export default Status;

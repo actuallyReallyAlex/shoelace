@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Fab, IconButton, TextField, Button } from "@material-ui/core";
 import styled from "styled-components";
 import CopyIcon from "@material-ui/icons/FileCopy";
@@ -90,6 +91,13 @@ const Output = ({ file, output, setDisplayStatus, setStage }) => {
       </ExportToFileButton>
     </Container>
   );
+};
+
+Output.propTypes = {
+  file: PropTypes.string,
+  output: PropTypes.string,
+  setDisplayStatus: PropTypes.func.isRequired,
+  setStage: PropTypes.func.isRequired
 };
 
 export default Output;

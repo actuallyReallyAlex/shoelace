@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import {
   Divider,
   Drawer,
@@ -128,6 +129,13 @@ const Sidebar = ({ darkMode, forceUpdate, setStage, store }) => {
       </VersionContainer>
     </Drawer>
   );
+};
+
+Sidebar.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  forceUpdate: PropTypes.func.isRequired,
+  setStage: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default Sidebar;
