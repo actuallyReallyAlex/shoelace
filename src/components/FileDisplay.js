@@ -56,6 +56,7 @@ const FileDisplay = ({ darkMode, forceUpdate, pastFile, store }) => {
     background-color: ${darkMode ? "#958299" : "#ffffff"};
     color: ${darkMode ? "#ffffff" : "rgba(0, 0, 0, 0.87)"};
     margin-right: 25px;
+    margin-top: 25px;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
       border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
