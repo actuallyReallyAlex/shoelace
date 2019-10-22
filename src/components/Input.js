@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import fs from "fs";
 import styled from "styled-components";
 import { Button, Fab, Typography } from "@material-ui/core";
@@ -184,6 +185,19 @@ const Input = ({
       )}
     </Container>
   );
+};
+
+Input.propTypes = {
+  converted: PropTypes.bool.isRequired,
+  file: PropTypes.string,
+  output: PropTypes.string,
+  setConverted: PropTypes.func.isRequired,
+  setFile: PropTypes.func.isRequired,
+  setOutput: PropTypes.func.isRequired,
+  setStage: PropTypes.func.isRequired,
+  setType: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired,
+  type: PropTypes.string
 };
 
 export default Input;

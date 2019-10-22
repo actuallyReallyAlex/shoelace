@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Button,
   Card,
@@ -104,6 +105,13 @@ const FileDisplay = ({ darkMode, forceUpdate, pastFile, store }) => {
       </CardActions>
     </StyledCard>
   );
+};
+
+FileDisplay.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  forceUpdate: PropTypes.func.isRequired,
+  pastFile: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default FileDisplay;

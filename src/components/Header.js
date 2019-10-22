@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { AppBar, Toolbar, IconButton } from "@material-ui/core";
 import LightIcon from "@material-ui/icons/WbSunny";
 import DarkIcon from "@material-ui/icons/NightsStay";
@@ -27,6 +28,11 @@ const Header = ({ darkMode, setDarkMode }) => {
       </Bar>
     </Container>
   );
+};
+
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired
 };
 
 export default Header;

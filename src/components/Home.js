@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import FileDisplay from "./FileDisplay";
 import { InputBase } from "@material-ui/core";
@@ -89,6 +90,12 @@ const Home = ({ darkMode, forceUpdate, store }) => {
       </PastFilesContainer>
     </Container>
   );
+};
+
+Home.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  forceUpdate: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default Home;
