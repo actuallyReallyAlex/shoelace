@@ -17,6 +17,7 @@ const Container = styled.div`
 const PastFilesContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const SearchIconContainer = styled.div`
