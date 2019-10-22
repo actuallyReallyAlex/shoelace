@@ -1,6 +1,6 @@
 {
   "name": "shoelacejs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "An application to convert files into JSON strings.",
   "main": "public/electron.js",
   "homepage": "./",
