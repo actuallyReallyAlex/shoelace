@@ -43,7 +43,7 @@
     "@rescripts/rescript-env": "^0.0.10",
     "concurrently": "^5.0.0",
     "copyfiles": "^2.1.1",
-    "electron": "^9.4.0",
+    "electron": "^15.5.5",
     "electron-builder": "^21.2.0",
     "electron-icon-generator": "^1.0.2",
     "pickitt": "^2.0.3",
